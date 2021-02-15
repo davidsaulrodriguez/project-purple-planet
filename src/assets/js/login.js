@@ -37,4 +37,5 @@ $(document).ready(function() {
         console.log(err);
       });
   }
+  $('.sidenav').sidenav();
 });
