@@ -19,6 +19,7 @@ const gls = require('gulp-live-server');
 /* Where the production ready build should go */
 const jsDist = './public/assets/js';
 const styleDist = './public/assets/css';
+const imgsDist = './public/assets/imgs';
 
 // Tasks that get things done!
 
@@ -70,7 +71,17 @@ task('js-dist', function () {
     .pipe(dest(jsDist));
 });
 
-task('compile', parallel('scss-dist', 'js-dist'));
+task('imgs-dist', function () {
+  console.log('\t\tMigrating your images files...');
+  return src(['src/assets/imgs/**.svg',
+    'src/assets/imgs/**.png',
+    'src/assets/imgs/**.jpg',
+    'src/assets/imgs/**.jpeg'
+  ])
+    .pipe(dest(imgsDist));
+});
+
+task('compile', parallel('scss-dist', 'js-dist', 'imgs-dist'));
 
 task('serve', function () {
   let server = gls.new(['app.js']);
