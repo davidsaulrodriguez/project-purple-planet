@@ -44,7 +44,6 @@ module.exports = function(app) {
     if (req.user) {
       res.render('todo', member);
     }
-    res.render('index');
   });
 
   app.get('/inprogress', isAuthenticated, function(req, res) {
@@ -53,7 +52,6 @@ module.exports = function(app) {
     if (req.user) {
       res.render('inprogress', member);
     }
-    res.render('index');
   });
 
   app.get('/review', isAuthenticated, function(req, res) {
@@ -62,7 +60,6 @@ module.exports = function(app) {
     if (req.user) {
       res.render('review', member);
     }
-    res.render('index');
   });
 
   app.get('/completed', isAuthenticated, function(req, res) {
@@ -71,6 +68,5 @@ module.exports = function(app) {
     if (req.user) {
       res.render('completed', member);
     }
-    res.render('index');
   });
 };
