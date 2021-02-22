@@ -76,4 +76,27 @@ module.exports = function (app) {
     });
   });
 
+  app.get('/action/:action', isAuthenticated, (req, res) => {
+    let member = req.user;
+    if (req.user) {
+      switch (req.params.action) {
+      case 'todo':
+        res.render('todo', member);
+        break;
+      case 'inprogress':
+        res.render('inprogress', member);
+        break;
+      case 'review':
+        res.render('review', member);
+        break;
+      case 'completed':
+        res.render('completed', member);
+        break;
+      default:
+        res.redirect('/');
+        break;
+      }
+    }
+  });
+
 };
